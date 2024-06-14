@@ -242,9 +242,9 @@ func (h *Handle) RuleListFiltered(family int, filter *Rule, filterMask uint64) (
 					Mask: net.CIDRMask(int(msg.Dst_len), 8*len(attrs[j].Value)),
 				}
 			case nl.FRA_FWMARK:
-				rule.Mark = int(native.Uint32(attrs[j].Value[0:4]))
+				rule.Mark = uint(native.Uint32(attrs[j].Value[0:4]))
 			case nl.FRA_FWMASK:
-				rule.Mask = int(native.Uint32(attrs[j].Value[0:4]))
+				rule.Mask = uint(native.Uint32(attrs[j].Value[0:4]))
 			case nl.FRA_TUN_ID:
 				rule.TunID = uint(native.Uint64(attrs[j].Value[0:8]))
 			case nl.FRA_IIFNAME:
